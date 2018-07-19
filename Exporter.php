@@ -20,10 +20,10 @@ class Exporter
             Formatter::CFG_INDENTATION => 4,
             Formatter::CFG_FILENAME => '%entity%.%extension%',
             Formatter::CFG_ANNOTATION_PREFIX => 'ORM\\',
-            Formatter::CFG_BUNDLE_NAMESPACE => 'MyBundle',
+            Formatter::CFG_BUNDLE_NAMESPACE => 'App',
             Formatter::CFG_ENTITY_NAMESPACE => 'Entity',
             Formatter::CFG_REPOSITORY_NAMESPACE => '',
-            Formatter::CFG_AUTOMATIC_REPOSITORY => true,
+            Formatter::CFG_AUTOMATIC_REPOSITORY => false,
             Formatter::CFG_SKIP_GETTER_SETTER => false,
         );
         $start = microtime(true);

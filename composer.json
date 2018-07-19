@@ -8,6 +8,7 @@
     "name": "Antonio Samano",
     "email": "antoniost.developer@gmail.com"
   }],
+
   "require" : {
     "php" : ">=5.4.0",
     "mysql-workbench-schema-exporter/doctrine2-exporter": "3.0.1"
