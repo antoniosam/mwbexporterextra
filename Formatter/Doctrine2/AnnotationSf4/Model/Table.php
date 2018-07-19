@@ -236,7 +236,7 @@ class Table extends BaseTable
         if(substr($value, -1)=='a' || substr($value, -1)=='e' || substr($value, -1)=='i' || substr($value, -1)=='o' || substr($value, -1)=='u'){
             $value.='s';
         }
-        if(substr($value, -1)=='l' || substr($value, -1)=='n'  || substr($value, -1)=='r'){
+        if(substr($value, -1)=='l' || substr($value, -1)=='n'  || substr($value, -1)=='r' || substr($value, -1)=='d'){
             $value.='es';
         }
 
