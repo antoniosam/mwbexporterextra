@@ -9,7 +9,6 @@ require __DIR__.'/../../../vendor/autoload.php';
 
 use \MwbExporter\Formatter\Doctrine2\Annotation\Formatter;
 
-// formatter setup
 $setup = array(
     Formatter::CFG_USE_LOGGED_STORAGE        => false,
     Formatter::CFG_INDENTATION               => 4,
@@ -28,7 +27,7 @@ $target = 'doctrine2-annotationsf3';
 // lets do it
 try {
     // lets stop the time
-    $start    = microtime(true);
+    $end = microtime(true);
     $filename = __DIR__.'/data/sakila.mwb';
     $outDir   = __DIR__.'/result';
     $logFile  = $outDir.'/log.txt';
@@ -36,6 +35,7 @@ try {
     $formatter = $bootstrap->getFormatter($target);
     $formatter->setup(array_merge(array(\MwbExporter\Formatter\Formatter::CFG_LOG_FILE => $logFile), $setup));
     $document  = $bootstrap->export($formatter, $filename, $outDir,$outputType);
+
 
     // show the time needed to parse the mwb file
     $end = microtime(true);
