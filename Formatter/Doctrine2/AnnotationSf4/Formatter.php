@@ -25,7 +25,7 @@
  * THE SOFTWARE.
  */
 
-namespace Ast\MwbExporterExtra\Formatter\Doctrine2\AnnotationSf3;
+namespace Ast\MwbExporterExtra\Formatter\Doctrine2\AnnotationSf4;
 
 use MwbExporter\Formatter\Doctrine2\Formatter as BaseFormatter;
 use MwbExporter\Model\Base;
@@ -97,7 +97,7 @@ class Formatter extends BaseFormatter
 
     public function getTitle()
     {
-        return 'Doctrine 2.0 Annotation Classes Symfony 3';
+        return 'Doctrine 2.0 Annotation Classes Symfony 4';
     }
 
     public function getFileExtension()

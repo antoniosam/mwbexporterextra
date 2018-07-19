@@ -1,24 +1,15 @@
 <?php
 /**
- * Created by PhpStorm.
  * User: marcosamano
  * Date: 19/07/18
  * Time: 1:52 PM
  */
 
-
 require __DIR__.'/../../../vendor/autoload.php';
 
-//autoload();
-
-//use \MwbExporter\BootstrapExtra;
 use \MwbExporter\Formatter\Doctrine2\Annotation\Formatter;
 
 // formatter setup
-
-
-//use MwbExporter\Formatter\Doctrine2\Annotation\Formatter;
-
 $setup = array(
     Formatter::CFG_USE_LOGGED_STORAGE        => false,
     Formatter::CFG_INDENTATION               => 4,
@@ -33,6 +24,7 @@ $setup = array(
 
 $outputType = 'file';// 'zip';
 $target = 'doctrine2-annotationsf3';
+//$target = 'doctrine2-annotationsf4';
 // lets do it
 try {
     // lets stop the time
