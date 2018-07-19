@@ -1,6 +1,7 @@
 <?php
 
 namespace Ast\MwbExporterExtra;
+
 use Ast\MwbExporterExtra\Bootstrap;
 use \MwbExporter\Formatter\Doctrine2\Annotation\Formatter;
 
