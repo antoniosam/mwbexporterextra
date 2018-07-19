@@ -25,7 +25,7 @@
  * THE SOFTWARE.
  */
 
-namespace Ast\MwbExporterExtra\Formatter\Doctrine2\AnnotationSf3\Model;
+namespace Ast\MwbExporterExtra\Formatter\Doctrine2\AnnotationSf4\Model;
 
 use Ast\MwbExporterExtra\Formatter\Doctrine2\AnnotationSf3\Formatter;
 
