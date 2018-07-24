@@ -58,7 +58,10 @@ class Table extends BaseTable
             }
         }
 
+        if($this->tableisAuthentication()){
+            $writer->write('use Symfony\Component\Security\Core\User\UserInterface;') ;
 
+        }
         $writer
             ->write('')
             ->write('/**')
@@ -80,8 +83,12 @@ class Table extends BaseTable
             //->writeIf($lifecycleCallbacks, ' * @HasLifecycleCallbacks')
             ->write( ' * @ORM\HasLifecycleCallbacks()')
             ->write(' */');
-
-        $writer->write('class '.$this->getClassName($extendableEntity).$extendsClass.$implementsInterface);
+        if($this->tableisAuthentication()) {
+            $implementsInterface = (empty($implementsInterface))?' implements UserInterface':$implementsInterface.' ,UserInterface';
+            $writer->write('class ' . $this->getClassName($extendableEntity) . $extendsClass . $implementsInterface);
+        }else{
+            $writer->write('class ' . $this->getClassName($extendableEntity) . $extendsClass . $implementsInterface);
+        }
 
         $writer->write('{')
             ->indent()
