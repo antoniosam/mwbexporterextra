@@ -243,8 +243,7 @@ class Table extends BaseTable
         if($iscolum==false){
             if(substr($value, -1)=='a' || substr($value, -1)=='e' || substr($value, -1)=='i' || substr($value, -1)=='o' || substr($value, -1)=='u'){
                 $value.='s';
-            }
-            if(substr($value, -1)=='l' || substr($value, -1)=='n'  || substr($value, -1)=='r' || substr($value, -1)=='d'){
+            }elseif(substr($value, -1)=='l' || substr($value, -1)=='n'  || substr($value, -1)=='r' || substr($value, -1)=='d'){
                 $value.='es';
             }
         }
@@ -306,52 +305,8 @@ class Table extends BaseTable
             ->write('{')
             ->write('}')
             ->write('')
-            ->write('/** @see \Serializable::serialize() */')
-            ->write('public function serialize()')
-            ->write('{')
-            ->write('    return serialize(array(')
-            ->write('            $this->'.$col_id.',')
-            ->write('            $this->'.$col_email.',')
-            ->write('            $this->pass,')
-            ->write('            // see section on salt below')
-            ->write('            // $this->salt,')
-            ->write('            $this->activo')
-            ->write('        ));')
-            ->write('}')
-            ->write('')
-            ->write('/** @see \Serializable::unserialize() */')
-            ->write('public function unserialize($serialized)')
-            ->write('{')
-            ->write('    list (')
-            ->write('        $this->'.$col_id.',')
-            ->write('        $this->'.$col_email.',')
-            ->write('        $this->pass,')
 
-            ->write('        // see section on salt below')
-            ->write('        // $this->salt')
-            ->write('        $this->activo')
-            ->write('        ) = unserialize($serialized);')
-            ->write('}')
-            ->write('')
-            ->write('public function isAccountNonExpired()')
-            ->write('{')
-            ->write('    return true;')
-            ->write('}')
-            ->write('')
-            ->write('public function isAccountNonLocked()')
-            ->write('{')
-            ->write('    return true;')
-            ->write('}')
-            ->write('')
-            ->write('public function isCredentialsNonExpired()')
-            ->write('{')
-            ->write('    return true;')
-            ->write('}')
-            ->write('')
-            ->write('public function isEnabled()')
-            ->write(' { ')
-            ->write('    return $this->activo;')
-            ->write(' } ');
+            ;
     }
 
 }
