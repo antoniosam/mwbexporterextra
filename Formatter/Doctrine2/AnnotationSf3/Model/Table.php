@@ -101,7 +101,7 @@ class Table extends BaseTable
                 }
             }
         }
-        $writer->write(' * '.$this->getAnnotation('Table', array('name' => $this->quoteIdentifier($this->getRawTableName()), 'indexes' => $this->getIndexesAnnotation('Index'), 'uniqueConstraints' => $this->getIndexesAnnotation('UniqueConstraint'))))
+        $writer->write(' * '.$this->getAnnotation('Table', array('name' => $this->quoteIdentifier($this->getRawTableName(),false), 'indexes' => $this->getIndexesAnnotation('Index'), 'uniqueConstraints' => $this->getIndexesAnnotation('UniqueConstraint'))))
             ->writeIf($extendableEntity, ' * '.$this->getAnnotation('InheritanceType', array('SINGLE_TABLE')))
             ->writeIf($extendableEntity, ' * '.$this->getAnnotation('DiscriminatorColumn', $this->getInheritanceDiscriminatorColumn()))
             ->writeIf($extendableEntity, ' * '.$this->getAnnotation('DiscriminatorMap', array($this->getInheritanceDiscriminatorMap())))
@@ -235,7 +235,7 @@ class Table extends BaseTable
         if(in_array("modificado",$arr) ){
             $writer->write('$this->modificado = new \DateTime("now"); ');
         }elseif(in_array("actualizado",$arr) ){
-        $writer->write('$this->actualizado = new \DateTime("now"); ');
+            $writer->write('$this->actualizado = new \DateTime("now"); ');
         }else{
             $writer->write('//Cambiar por el campo modificado si es que existe en la tabla');
             $writer->write('//$this->updated = new \DateTime("now"); ');
@@ -254,7 +254,7 @@ class Table extends BaseTable
      * @param string $value  The identifier to quote
      * @return string
      */
-    public function quoteIdentifier($value)
+    public function quoteIdentifier($value,$iscolum=true)
     {
         $quote = false;
         switch ($this->getConfig()->get(Formatter::CFG_QUOTE_IDENTIFIER_STRATEGY)) {
@@ -266,11 +266,12 @@ class Table extends BaseTable
                 $quote = true;
                 break;
         }
-        if(substr($value, -1)=='a' || substr($value, -1)=='e' || substr($value, -1)=='i' || substr($value, -1)=='o' || substr($value, -1)=='u'){
-            $value.='s';
-        }
-        if(substr($value, -1)=='l' || substr($value, -1)=='n'  || substr($value, -1)=='r'){
-            $value.='es';
+        if($iscolum==false){
+            if(substr($value, -1)=='a' || substr($value, -1)=='e' || substr($value, -1)=='i' || substr($value, -1)=='o' || substr($value, -1)=='u'){
+                $value.='s';
+            }elseif(substr($value, -1)=='l' || substr($value, -1)=='n'  || substr($value, -1)=='r' || substr($value, -1)=='d'){
+                $value.='es';
+            }
         }
 
         return $quote ? '`'.$value.'`' : $value;
