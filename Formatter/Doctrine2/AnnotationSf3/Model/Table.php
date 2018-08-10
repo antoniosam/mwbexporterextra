@@ -216,6 +216,8 @@ class Table extends BaseTable
             ->indent();
         if(in_array("creado",$arr) ){
             $writer->write('$this->creado = new \DateTime("now"); ');
+        }elseif(in_array("creada",$arr) ){
+            $writer->write('$this->creada = new \DateTime("now"); ');
         }else{
             $writer->write('//Cambiar por el campo creado si es que existe en la tabla');
             $writer->write('//$this->created = new \DateTime("now"); ');
