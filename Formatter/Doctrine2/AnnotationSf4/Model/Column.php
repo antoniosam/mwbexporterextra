@@ -26,7 +26,10 @@ class Column extends BaseColumn
             $type= $this->getFormatter()->getDatatypeConverter()->getMappedType($this);
             if(!$this->isPrimary){
                 $default=$this->parameters->get('defaultValue');
-                if( ($type=="integer" || $type=="float") &&  $default!="" && $default!=null && $default!='NULL'){
+                if( $type=="string" &&  $default!="" && $default!=null && $default!='NULL'){
+
+                    $writer->write('protected $'.$this->getColumnName()."='".$default."';");
+                }elseif( ($type=="integer" || $type=="float") &&  $default!="" && $default!=null && $default!='NULL'){
 
                     $writer->write('protected $'.$this->getColumnName().'= '.($default*1).';');
                 }elseif($type=="boolean" && $default!="" && $default!=null && $default!='NULL'){
@@ -77,7 +80,11 @@ class Column extends BaseColumn
                 $opciones["default"]=($default=='TRUE'? 1:($default=='FALSE'? 0: ($default*1)));
                 $attributes['options']=$opciones;
             }
-
+            if($type=="string" && $default!="" && $default!=null && $default!='NULL'){
+                $opciones=(isset($attributes['options']))?$attributes['options']:array();
+                $opciones["default"]=$default;
+                $attributes['options']=$opciones;
+            }
 
         }
 
