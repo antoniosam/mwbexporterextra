@@ -52,7 +52,7 @@ class Column extends BaseColumn
                 $default=$this->parameters->get('defaultValue');
                 if( ($type=="integer" || $type=="float") &&  $default!="" && $default!=null && $default!='NULL'){
 
-                    $writer->write('protected $'.$this->getColumnName().'= '.($default*1).';'); var_dump($default);
+                    $writer->write('protected $'.$this->getColumnName().'= '.($default*1).';');
                 }elseif($type=="boolean" && $default!="" && $default!=null && $default!='NULL'){
 
                     $writer->write('protected $'.$this->getColumnName().'= '.($default=='TRUE'? "true":($default=='FALSE'? "false":(($default*1)==1?"true":"false"))).';');
