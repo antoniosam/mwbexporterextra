@@ -10,17 +10,18 @@ class Exporter
     /**
      * @param $filemwb
      * @param $outDir
+     * @param string $namespace
      * @param bool $info
      * @return bool|string
      */
-    public static function symfony4($filemwb, $outDir, $info = false)
+    public static function symfony4($filemwb, $outDir, $namespace = 'App',$info = false)
     {
         $setup = array(
             Formatter::CFG_USE_LOGGED_STORAGE => $info,
             Formatter::CFG_INDENTATION => 4,
             Formatter::CFG_FILENAME => '%entity%.%extension%',
             Formatter::CFG_ANNOTATION_PREFIX => 'ORM\\',
-            Formatter::CFG_BUNDLE_NAMESPACE => 'App',
+            Formatter::CFG_BUNDLE_NAMESPACE => $namespace,
             Formatter::CFG_ENTITY_NAMESPACE => 'Entity',
             Formatter::CFG_REPOSITORY_NAMESPACE => '',
             Formatter::CFG_AUTOMATIC_REPOSITORY => false,
@@ -74,7 +75,7 @@ class Exporter
      * @param bool $info
      * @return bool|string
      */
-    public static function symfony3($filemwb, $outDir, $info = false)
+    public static function symfony3($filemwb, $outDir, $namespace = 'AppBundle', $info = false)
     {
         $setup = array(
             Formatter::CFG_USE_LOGGED_STORAGE => $info,
@@ -82,7 +83,7 @@ class Exporter
             Formatter::CFG_FILENAME => '%entity%.%extension%',
             Formatter::CFG_ANNOTATION_PREFIX => 'ORM\\',
             Formatter::CFG_BUNDLE_NAMESPACE => 'AppBundle',
-            Formatter::CFG_ENTITY_NAMESPACE => 'Entity',
+            Formatter::CFG_ENTITY_NAMESPACE => $namespace,
             Formatter::CFG_REPOSITORY_NAMESPACE => '',
             Formatter::CFG_AUTOMATIC_REPOSITORY => false,
             Formatter::CFG_SKIP_GETTER_SETTER => false,
