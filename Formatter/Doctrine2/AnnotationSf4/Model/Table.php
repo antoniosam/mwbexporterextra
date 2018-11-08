@@ -169,17 +169,18 @@ class Table extends BaseTable
         ;
 
         $arr=$this->getColumns()->getColumnNames();
-        $caden=(in_array("nombre",$arr))?"$"."this->nombre;":"(string) $"."this->{$arr[0]};";
-
-        $writer
-            ->write('public function __toString()')
-            ->write('{')
-            ->indent()
-            ->write('return '.$caden)
-            ->outdent()
-            ->write('}')
-            ->write('')
-        ;
+        if(count($arr)>0){
+            $caden=(in_array("nombre",$arr))?"$"."this->nombre;":"(string) $"."this->{$arr[0]};";
+            $writer
+                ->write('public function __toString()')
+                ->write('{')
+                ->indent()
+                ->write('return '.$caden)
+                ->outdent()
+                ->write('}')
+                ->write('')
+            ;
+        }
 
         $writer
             ->write('/**')
