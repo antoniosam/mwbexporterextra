@@ -3,7 +3,7 @@ Libreria basada en https://github.com/mysql-workbench-schema-exporter/doctrine2-
 
 ## Instalacion
 ```
-composer require antoniosam/mwbexporterextra
+composer require --dev antoniosam/mwbexporterextra
 ```
 ## Uso
 ```
