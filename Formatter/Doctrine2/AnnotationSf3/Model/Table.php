@@ -307,7 +307,7 @@ class Table extends BaseTable
     public function writeImplementMetodos(WriterInterface $writer){
         $columnas=$this->getColumns()->getColumnNames();
         $col_email=(in_array("email",$columnas))?"email":((in_array("mail",$columnas))?"mail":"correo");
-        $col_id=($this->getModelName()=="Administradores")?"idadministrador":"idusuario";
+        $col_id ='id';
         $rol=($this->getModelName()=="Administradores")?"ROLE_ADMIN":"ROLE_LOCAL";
         $writer
             ->write('')
