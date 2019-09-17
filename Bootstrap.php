@@ -37,7 +37,7 @@ class Bootstrap
                 $formatterClass = sprintf('Ast\\MwbExporterExtra\\Formatter\\%s\\%s\\Formatter', $vendor, $subVendor);
                 self::$formatters[$formatter] = $formatterClass;
             }
-            $normal_base  = str_replace('antoniosam/mwbexporterextra','mysql-workbench-schema-exporter/*/lib/MwbExporter',$pattern);
+            $normal_base  = str_replace('antoniosam'.$DS.'mwbexporterextra','mysql-workbench-schema-exporter'.$DS.'*'.$DS.'lib'.$DS.'MwbExporter',$pattern);
             $pattern = $normal_base;
 
             // check if mwbse is installed via composer
